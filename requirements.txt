@@ -1,7 +1,7 @@
 streamlit
 librosa
 matplotlib
-gdown
-pillow
-orange3
+Pillow
+Orange
 PyQt5
+AnyQt
