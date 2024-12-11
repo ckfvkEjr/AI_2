@@ -3,3 +3,5 @@ librosa
 matplotlib
 Pillow
 Orange
+PyQt5
+AnyQt
