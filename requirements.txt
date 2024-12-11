@@ -4,3 +4,4 @@ librosa
 matplotlib
 pillow
 numpy
+PyQt5
