@@ -9,7 +9,7 @@ import gdown
 import io
 
 # Google Drive 파일 ID
-ows_file_id = 'your_google_drive_file_id_here'  # .ows 파일 ID
+ows_file_id = '1PoZpN8KsuwQhFpv7cRQX1BZYJ64kIkAS'  # .ows 파일 ID
 
 # Google Drive에서 .ows 파일 다운로드 함수
 @st.cache(allow_output_mutation=True)
