@@ -1,3 +1,6 @@
-streamlit
-orange3
-pandas
+streamlit==1.25.0
+orange3==3.36.0
+librosa==0.10.0.post2
+matplotlib==3.8.0
+pillow==9.5.0
+numpy==1.23.5
