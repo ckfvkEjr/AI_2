@@ -17,7 +17,7 @@ def load_ows_from_drive(file_id):
     url = f'https://drive.google.com/uc?id={file_id}'
     output = 'workflow.ows'
     gdown.download(url, output, quiet=False)
-
+    
     # Orange 워크플로 로드
     workflow = Orange.workflow.read_workflow(output)
     return workflow
