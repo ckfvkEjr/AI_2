@@ -7,7 +7,7 @@ from PIL import Image
 import gdown
 
 # Google Drive 파일 ID
-file_id = '1xaPgoHahhdzLaIi652ySl_7Sw_Kcut9X'
+file_id = '14y7xPjVyBg_oFasSuODSHQP3b2BSm6vt'
 
 # 모델 로드 함수
 @st.cache_data
