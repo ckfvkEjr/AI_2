@@ -154,8 +154,8 @@ def main():
         }
     }
 
-# 레이아웃 설정
-left_column, right_column = st.columns([1, 2])  # 왼쪽과 오른쪽의 비율 조정
+    # 레이아웃 설정
+    left_column, right_column = st.columns([1, 2])  # 왼쪽과 오른쪽의 비율 조정
 
     # 음악 파일 업로드
     uploaded_music = st.file_uploader("음악 파일을 업로드하세요 (MP3, WAV)", type=['mp3', 'wav'])
