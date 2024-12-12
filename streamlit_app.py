@@ -82,7 +82,6 @@ def display_right_content(prediction, data):
         with cols[i]:
             st.write(data['texts'][i])
 
-# 메인 앱 함수
 def main():
     # 스타일링을 통해 페이지 마진 줄이기
     st.markdown("""
