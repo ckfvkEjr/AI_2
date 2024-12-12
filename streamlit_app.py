@@ -36,6 +36,19 @@ def create_mel_spectrogram(audio_file, output_path="mel_spectrogram.png"):
     plt.close()
     return output_path
 
+# 스타일링을 통해 페이지 마진 줄이기
+st.markdown("""
+    <style>
+    .reportview-container .main .block-container {
+        max-width: 90%;
+        padding-top: 1rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        padding-bottom: 1rem;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 # 왼쪽 콘텐츠 표시 함수
 def display_left_content(image, prediction, probs, labels):
     st.write("### 왼쪽: 기존 출력 결과")
