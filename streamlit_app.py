@@ -54,6 +54,25 @@ def display_left_content(image, prediction, probs, labels):
                 </div>
         """, unsafe_allow_html=True)
 
+# 오른쪽 콘텐츠 표시 함수
+def display_right_content(prediction, data):
+    st.write("### 오른쪽: 동적 분류 결과")
+    cols = st.columns(3)
+
+    # 1st Row - Images
+    for i in range(3):
+        with cols[i]:
+            st.image(data['images'][i], caption=f"이미지: {prediction}", use_column_width=True)
+    # 2nd Row - YouTube Videos
+    for i in range(3):
+        with cols[i]:
+            st.video(data['videos'][i])
+            st.caption(f"유튜브: {prediction}")
+    # 3rd Row - Text
+    for i in range(3):
+        with cols[i]:
+            st.write(data['texts'][i])
+
 # 메인 앱
 def main():
     st.title('음악 장르 분류기')
@@ -76,6 +95,44 @@ def main():
     learner = load_model_from_drive(file_id)
     st.success("모델이 성공적으로 로드되었습니다!")
 
+    # 분류에 따라 다른 콘텐츠 관리
+    content_data = {
+        'Label1': {
+            'images': [
+                "https://via.placeholder.com/300?text=Label1_Image1",
+                "https://via.placeholder.com/300?text=Label1_Image2",
+                "https://via.placeholder.com/300?text=Label1_Image3"
+            ],
+            'videos': [
+                "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
+                "https://www.youtube.com/watch?v=2Vv-BfVoq4g",
+                "https://www.youtube.com/watch?v=3JZ_D3ELwOQ"
+            ],
+            'texts': [
+                "Label 1 관련 첫 번째 텍스트 내용입니다.",
+                "Label 1 관련 두 번째 텍스트 내용입니다.",
+                "Label 1 관련 세 번째 텍스트 내용입니다."
+            ]
+        },
+        'Label2': {
+            'images': [
+                "https://via.placeholder.com/300?text=Label2_Image1",
+                "https://via.placeholder.com/300?text=Label2_Image2",
+                "https://via.placeholder.com/300?text=Label2_Image3"
+            ],
+            'videos': [
+                "https://www.youtube.com/watch?v=2Vv-BfVoq4g",
+                "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
+                "https://www.youtube.com/watch?v=2Vv-BfVoq4g"
+            ],
+            'texts': [
+                "Label 2 관련 첫 번째 텍스트 내용입니다.",
+                "Label 2 관련 두 번째 텍스트 내용입니다.",
+                "Label 2 관련 세 번째 텍스트 내용입니다."
+            ]
+        }
+    }
+
     # 음악 파일 업로드
     uploaded_music = st.file_uploader("음악 파일을 업로드하세요 (MP3, WAV)", type=['mp3', 'wav'])
 
@@ -91,10 +148,18 @@ def main():
             pred, pred_idx, probs = learner.predict(mel_spec_image)
 
             # 레이아웃 설정
-            left_column, _ = st.columns([1, 2])  # 왼쪽 비율 강조
+            left_column, right_column = st.columns([1, 2])
 
             with left_column:
                 display_left_content(mel_spec_path, pred, probs, learner.dls.vocab)
+
+            with right_column:
+                data = content_data.get(pred, {
+                    'images': ["https://via.placeholder.com/300"] * 3,
+                    'videos': ["https://www.youtube.com/watch?v=3JZ_D3ELwOQ"] * 3,
+                    'texts': ["기본 텍스트"] * 3
+                })
+                display_right_content(pred, data)
 
         except Exception as e:
             st.error(f"모델 예측 중 오류 발생: {e}")
