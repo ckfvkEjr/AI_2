@@ -114,7 +114,7 @@ def main():
 
     # 분류에 따라 다른 콘텐츠 관리
     content_data = {
-        'Label1': {
+        'Label[0]': {
             'images': [
                 "https://i.ibb.co/Gp5KgvV/memed-io-output.jpg",
                 "https://i.ibb.co/Gp5KgvV/memed-io-output.jpg",
@@ -131,7 +131,7 @@ def main():
                 "Label 1 "
             ]
         },
-        'Label2': {
+        'Label[1]': {
             'images': [
                 "https://via.placeholder.com/300?text=Label2_Image1",
                 "https://via.placeholder.com/300?text=Label2_Image2",
@@ -148,7 +148,7 @@ def main():
                 "Label 2 관련 세 번째 텍스트 내용입니다."
             ]
         },
-        'Label3': {
+        'Label[2]': {
             'images': [
                 "https://via.placeholder.com/300?text=Label2_Image1",
                 "https://via.placeholder.com/300?text=Label2_Image2",
