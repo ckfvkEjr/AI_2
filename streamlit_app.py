@@ -57,21 +57,25 @@ def display_left_content(image, prediction, probs, labels):
 # 오른쪽 콘텐츠 표시 함수
 def display_right_content(prediction, data):
     st.write("### 오른쪽: 동적 분류 결과")
-    cols = st.columns(1)
-
+    
+    # 여러 개의 열을 나누기 위해 3개 열 생성
+    cols = st.columns(3)  # 3개의 열을 생성
+    
     # 1st Row - Images
-    for i in range(1):
-        with cols[i]:
-            st.image(data['images'][i], caption=f"이미지: {prediction}", use_column_width=True)
+    with cols[0]:
+        for img_url in data['images']:
+            st.image(img_url, caption=f"이미지: {prediction}", use_column_width=True)
+    
     # 2nd Row - YouTube Videos
-    for i in range(1):
-        with cols[i]:
-            st.video(data['videos'][i])
+    with cols[1]:
+        for video_url in data['videos']:
+            st.video(video_url)
             st.caption(f"유튜브: {prediction}")
+    
     # 3rd Row - Text
-    for i in range(1):
-        with cols[i]:
-            st.write(data['texts'][i])
+    with cols[2]:
+        for text in data['texts']:
+            st.write(text)
 
 # 메인 앱
 def main():
