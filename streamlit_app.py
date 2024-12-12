@@ -20,7 +20,7 @@ def load_model_from_drive(file_id):
 
 # 멜 스펙트로그램 생성 함수 (이미지 저장)
 def create_mel_spectrogram(audio_file, output_path="mel_spectrogram.png"):
-    # 오디오 로드 (10초)
+    # 오디오 로드
     y, sr = librosa.load(audio_file)
 
     # 멜 스펙트로그램 생성
@@ -36,9 +36,40 @@ def create_mel_spectrogram(audio_file, output_path="mel_spectrogram.png"):
     plt.close()
     return output_path
 
+# 왼쪽 콘텐츠 표시 함수
+def display_left_content(image, prediction, probs, labels):
+    st.write("### 왼쪽: 기존 출력 결과")
+    if image is not None:
+        st.image(image, caption="멜 스펙트로그램", use_column_width=True)
+    st.write(f"**예측된 장르:** {prediction}")
+    st.markdown("<h4>장르별 확률:</h4>", unsafe_allow_html=True)
+    for label, prob in zip(labels, probs):
+        st.markdown(f"""
+            <div style="background-color: #f0f0f0; border-radius: 5px; padding: 5px; margin: 5px 0;">
+                <strong style="color: #333;">{label}:</strong>
+                <div style="background-color: #d3d3d3; border-radius: 5px; width: 100%; padding: 2px;">
+                    <div style="background-color: #4CAF50; width: {prob*100}%; padding: 5px 0; border-radius: 5px; text-align: center; color: white;">
+                        {prob:.4f}
+                    </div>
+                </div>
+        """, unsafe_allow_html=True)
+
 # 메인 앱
 def main():
     st.title('음악 장르 분류기')
+
+    # 스타일링: 페이지 마진 줄이기
+    st.markdown("""
+        <style>
+        .reportview-container .main .block-container {
+            max-width: 90%;
+            padding-top: 1rem;
+            padding-right: 1rem;
+            padding-left: 1rem;
+            padding-bottom: 1rem;
+        }
+        </style>
+        """, unsafe_allow_html=True)
 
     # 모델 로드
     st.write("모델을 로드 중입니다. 잠시만 기다려주세요...")
@@ -59,14 +90,11 @@ def main():
         try:
             pred, pred_idx, probs = learner.predict(mel_spec_image)
 
-            # 결과 표시
-            st.image(mel_spec_path, caption="멜 스펙트로그램", use_column_width=True)
-            st.write(f"**예측된 장르:** {pred}")
+            # 레이아웃 설정
+            left_column, _ = st.columns([1, 2])  # 왼쪽 비율 강조
 
-            st.markdown("<h4>장르별 확률:</h4>", unsafe_allow_html=True)
-            labels = learner.dls.vocab
-            for label, prob in zip(labels, probs):
-                st.write(f"- {label}: {prob:.4f}")
+            with left_column:
+                display_left_content(mel_spec_path, pred, probs, learner.dls.vocab)
 
         except Exception as e:
             st.error(f"모델 예측 중 오류 발생: {e}")
