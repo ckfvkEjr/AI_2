@@ -130,7 +130,7 @@ def main():
                 "Label 2 관련 두 번째 텍스트 내용입니다.",
                 "Label 2 관련 세 번째 텍스트 내용입니다."
             ]
-        }
+        },
         'Label3': {
             'images': [
                 "https://via.placeholder.com/300?text=Label2_Image1",
