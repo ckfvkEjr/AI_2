@@ -21,7 +21,7 @@ def load_model_from_drive(file_id):
 # 멜 스펙트로그램 생성 함수 (이미지 저장)
 def create_mel_spectrogram(audio_file, output_path="mel_spectrogram.png"):
     # 오디오 로드
-    y, sr = librosa.load(audio_file)
+    y, sr = librosa.load(audio_file, duration=30)
 
     # 멜 스펙트로그램 생성
     mel_spec = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128, fmax=8000)
