@@ -1,9 +1,7 @@
 streamlit
-pandas
+fastai
+pillow
+librosa
+matplotlib
 numpy
-plotly
-fastai2
-fastbook
-Pillow
 gdown
-opencv-python-headless
