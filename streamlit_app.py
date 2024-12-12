@@ -37,7 +37,7 @@ def create_mel_spectrogram(audio_file):
     return buf
 
 # 모델 로드 함수
-@st.cache(allow_output_mutation=True)
+@st.cache_data
 def load_model_from_drive(file_id):
     url = f'https://drive.google.com/uc?id={file_id}'
     output = 'model.pkl'
