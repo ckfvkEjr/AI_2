@@ -235,7 +235,7 @@ def main():
         # 모델 예측
         try:
             pred, pred_idx, probs = learner.predict(mel_spec_image)
-            st.write(pred_idx)
+            st.write(pred)
 
             with left_column:
                 display_left_content(mel_spec_path, pred, probs, learner.dls.vocab)
