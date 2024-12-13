@@ -75,20 +75,20 @@ def display_right_content(prediction, data):
     cols = st.columns(3)  # 3개의 열을 생성
     
     # 1st Row - Images
-    with cols[0]:
-        for img_url in data['images']:
-            st.image(img_url, caption=f"이미지: {prediction}", use_column_width=True)
-    
+    for i in range(3):
+        with cols[i]:
+            st.image(data['images'][i], caption=f"이미지: {prediction}", use_column_width=True)
     # 2nd Row - YouTube Videos
-    with cols[1]:
-        for video_url in data['videos']:
-            st.video(video_url)
+    for i in range(3):
+        with cols[i]:
+            st.video(data['videos'][i])
             st.caption(f"유튜브: {prediction}")
-    
     # 3rd Row - Text
-    with cols[2]:
-        for text in data['texts']:
-            st.write(text)
+    for i in range(3):
+        with cols[i]:
+            st.write(data['texts'][i])
+    
+    
 
 # 메인 앱
 def main():
@@ -183,9 +183,6 @@ def main():
         # 모델 예측
         try:
             pred, pred_idx, probs = learner.predict(mel_spec_image)
-
-            # 레이아웃 설정
-            left_column, right_column = st.columns([1, 2])
 
             with left_column:
                 display_left_content(mel_spec_path, pred, probs, learner.dls.vocab)
