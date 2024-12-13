@@ -242,7 +242,7 @@ def main():
                 data = content_data.get(pred, {
                     'images': ["https://i.ibb.co/Gp5KgvV/memed-io-output.jpg"] * 3,
                     'videos': ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"] * 3,
-                    'texts': ["이거 어케 바꿔;;"] * 3
+                    'texts': ["ㅅㅂ"] * 3
                 })
                 display_right_content(pred, data)
 
