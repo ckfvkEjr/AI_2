@@ -53,7 +53,7 @@ st.markdown("""
 def display_left_content(image, prediction, probs, labels):
     st.write("### 왼쪽: 기존 출력 결과")
     if image is not None:
-        st.image(image, caption="멜 스펙트로그램", use_column_width=True)
+        st.image(image, caption="멜 스펙트로그램", use_container_width=True)
     st.write(f"**예측된 장르:** {prediction}")
     st.markdown("<h4>장르별 확률:</h4>", unsafe_allow_html=True)
     for label, prob in zip(labels, probs):
@@ -77,7 +77,7 @@ def display_right_content(prediction, data):
     # 1st Row - Images
     for i in range(3):
         with cols[i]:
-            st.image(data['images'][i], caption=f"이미지: {prediction}", use_column_width=True)
+            st.image(data['images'][i], caption=f"이미지: {prediction}", use_container_width=True)
     # 2nd Row - YouTube Videos
     for i in range(3):
         with cols[i]:
