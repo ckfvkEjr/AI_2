@@ -239,12 +239,12 @@ def main():
                 display_left_content(mel_spec_path, pred, probs, learner.dls.vocab)
 
             with right_column:
-                data = content_data.get(prediction, {
+                data = content_data.get(pred, {
                     'images': ["https://i.ibb.co/Gp5KgvV/memed-io-output.jpg"] * 3,
                     'videos': ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"] * 3,
                     'texts': ["이거 어케 바꿔;;"] * 3
                 })
-                display_right_content(prediction, data)
+                display_right_content(pred, data)
 
 
 
