@@ -111,10 +111,11 @@ def main():
     st.write("모델을 로드 중입니다. 잠시만 기다려주세요...")
     learner = load_model_from_drive(file_id)
     st.success("모델이 성공적으로 로드되었습니다!")
+    labels = learner.dls.vocab
 
     # 분류에 따라 다른 콘텐츠 관리
     content_data = {
-        'Label[0]': {
+        'labels[0]': {
             'images': [
                 "https://i.ibb.co/Gp5KgvV/memed-io-output.jpg",
                 "https://i.ibb.co/Gp5KgvV/memed-io-output.jpg",
@@ -131,7 +132,7 @@ def main():
                 "Label 1 "
             ]
         },
-        'Label[1]': {
+        'labels[1]': {
             'images': [
                 "https://via.placeholder.com/300?text=Label2_Image1",
                 "https://via.placeholder.com/300?text=Label2_Image2",
@@ -148,7 +149,7 @@ def main():
                 "Label 2 관련 세 번째 텍스트 내용입니다."
             ]
         },
-        'Label[2]': {
+        'labels[2]': {
             'images': [
                 "https://via.placeholder.com/300?text=Label2_Image1",
                 "https://via.placeholder.com/300?text=Label2_Image2",
@@ -165,7 +166,7 @@ def main():
                 "Label 2 관련 세 번째 텍스트 내용입니다."
             ]
         },
-        'Label[3]': {
+        'labels[3]': {
             'images': [
                 "https://via.placeholder.com/300?text=Label2_Image1",
                 "https://via.placeholder.com/300?text=Label2_Image2",
@@ -182,7 +183,7 @@ def main():
                 "Label 2 관련 세 번째 텍스트 내용입니다."
             ]
         },
-        'Label[4]': {
+        'labels[4]': {
             'images': [
                 "https://via.placeholder.com/300?text=Label2_Image1",
                 "https://via.placeholder.com/300?text=Label2_Image2",
@@ -199,7 +200,7 @@ def main():
                 "Label 2 관련 세 번째 텍스트 내용입니다."
             ]
         },
-        'Label[5]': {
+        'labels[5]': {
             'images': [
                 "https://via.placeholder.com/300?text=Label2_Image1",
                 "https://via.placeholder.com/300?text=Label2_Image2",
