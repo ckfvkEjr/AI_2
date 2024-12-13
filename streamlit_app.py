@@ -77,12 +77,12 @@ def display_right_content(prediction, data):
     # 1st Row - Images
     for i in range(3):
         with cols[i]:
-            st.image(data['images'][i], caption=f"이미지: {pred}", use_column_width=True)
+            st.image(data['images'][i], caption=f"이미지: {prediction}", use_column_width=True)
     # 2nd Row - YouTube Videos
     for i in range(3):
         with cols[i]:
             st.video(data['videos'][i])
-            st.caption(f"유튜브: {pred}")
+            st.caption(f"유튜브: {prediction}")
     # 3rd Row - Text
     for i in range(3):
         with cols[i]:
@@ -239,12 +239,12 @@ def main():
                 display_left_content(mel_spec_path, pred, probs, learner.dls.vocab)
 
             with right_column:
-                data = content_data.get(pred, {
+                data = content_data.get(prediction, {
                     'images': ["https://i.ibb.co/Gp5KgvV/memed-io-output.jpg"] * 3,
                     'videos': ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"] * 3,
                     'texts': ["이거 어케 바꿔;;"] * 3
                 })
-                display_right_content(pred, data)
+                display_right_content(prediction, data)
 
 
 
