@@ -240,9 +240,9 @@ def main():
 
             with right_column:
                 data = content_data.get(pred, {
-                    'images': ["https://i.ibb.co/Gp5KgvV/memed-io-output.jpg"] * 3,
-                    'videos': ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"] * 3,
-                    'texts': ["ㅅㅂ"] * 3
+                    'images': ["https://via.placeholder.com/300"] * 3,
+                    'videos': ["https://www.youtube.com/watch?v=3JZ_D3ELwOQ"] * 3,
+                    'texts': ["기본 텍스트"] * 3
                 })
                 display_right_content(pred, data)
 
