@@ -235,7 +235,7 @@ def main():
         # 모델 예측
         try:
             pred, pred_idx, probs = learner.predict(mel_spec_image)
-            st.write(pred)
+            
 
             with left_column:
                 display_left_content(mel_spec_path, pred, probs, learner.dls.vocab)
@@ -247,7 +247,7 @@ def main():
                     'texts': ["기본 텍스트"] * 3
                 })
                 display_right_content(pred, data)
-
+                st.title(data)
 
 
 
